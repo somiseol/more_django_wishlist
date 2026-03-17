@@ -1,0 +1,22 @@
+<!--- will show in every single page that extends this base template --->
+
+<!DOCTYPE html>
+<hmtl>
+<head>  
+    <title>TRAVEL WISHLIST</title>  
+</head>
+
+<h1>WHERE DO YOU WANT TO GO?</h1>
+
+<body>
+    {% block content %} {% endblock %}
+</body>
+
+<div>  <!--- footer --->
+    <p>a travel wishlist, build with Django</p>
+    <a href="{% url 'place_list' %}">wishlist</a>
+    <a href="{% url 'places_visited' %}">places visited</a>
+    <a href="{% url 'about' %}">about</a>
+</div>
+
+</hmtl>
