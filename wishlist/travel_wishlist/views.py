@@ -37,6 +37,7 @@ def places_visited(request):
     visited_places = Place.objects.filter(visited=True).order_by('name')
     return render(request, 'travel_wishlist/visited.html', {'visited_places': visited_places})
 
+
 @login_required
 def place_was_visited(request, place_pk):  # place_pk is from url path (needs to match)
     if request.method == "POST":
@@ -51,7 +52,19 @@ def place_was_visited(request, place_pk):  # place_pk is from url path (needs to
     # return redirect('places_visited)
     return redirect('place_list')  # 'place_list' is path from urls.py
 
+
 @login_required
 def place_details(request,place_pk):
     place = get_object_or_404(Place, pk=place_pk)
     return render(request, 'travel_wishlist/place_detail.html', {'place': place})
+
+
+@login_required
+def delete_place(request, place_pk):
+    place = get_object_or_404(Place, pk=place_pk)
+    if place.user == request.user:
+        place.delete()
+        return redirect('place_list')
+    else:
+        return HttpResponseForbidden()
+

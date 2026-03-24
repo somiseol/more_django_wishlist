@@ -11,9 +11,14 @@
 
     <form action="{% url 'place_was_visited' place.pk %}" method="POST">
         {% csrf_token %}
-        <button type="sbmit" class="visited">Visited</button>
+        <button type="submit" class="visited">Visited</button>
     </form>
 
 {% endif %}
+
+<form action="{% url 'delete_place' place.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="delete">Delete</button>
+</form>
 
 {% endblock %}
