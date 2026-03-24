@@ -25,6 +25,6 @@ a.nav-link {
     border: darkgreen;
 }
 
-#delete {
+button.delete {
     background-color: red;
 }
