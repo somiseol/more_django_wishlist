@@ -17,7 +17,7 @@
 
     <form class="visited-form" method="POST" action="{% url 'place_was_visited' place.pk %}">  <!--- url reversing; will fill in placeholder in the path in urls.py (place/<int:place_pk>/was_visited) --->
         {% csrf_token %}
-        <button id="visited-button-{{ place.pk }}">visited</button>
+        <button id="visited-button-{{ place.pk }}" type="submit">visited</button>
     </form>
 
 </div>
