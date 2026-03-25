@@ -25,6 +25,12 @@ class Place(models.Model):
             default_storage.delete(photo.name)
 
 
+    def delete(self, *args, **kwargs):
+        if self.photo:
+            self.delete_photo(self.photo)
+
+        super().delete(*args, **kwargs)
+
     def __str__(self):
         photo_str = self.photo.url if self.photo else 'no photo'
         notes_str = self.notes[100:] if self.notes else 'no notes' # truncate to first 100 char
