@@ -6,7 +6,7 @@ class NewPlaceForm(forms.ModelForm):
         model = Place
         fields = ('name', 'visited')
 
-class DateInput(forms.DateInput):
+class DateInput(forms.DateInput):  # needed for date input in TripReviewForm
     input_type = 'date'
 
 class TripReviewForm(forms.ModelForm):

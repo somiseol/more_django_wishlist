@@ -86,7 +86,7 @@ def place_details(request,place_pk):
 @login_required
 def delete_place(request, place_pk):
     place = get_object_or_404(Place, pk=place_pk)
-    if place.user == request.user:
+    if place.user == request.user:  # make it's correct user
         place.delete()
         return redirect('place_list')
     else:

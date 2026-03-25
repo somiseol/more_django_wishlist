@@ -21,7 +21,7 @@ class Place(models.Model):
 
 
     def delete_photo(self, photo):
-        if default_storage.exists(photo.name):
+        if default_storage.exists(photo.name):  # if the photo exists, then delete it
             default_storage.delete(photo.name)
 
 
@@ -29,7 +29,7 @@ class Place(models.Model):
         if self.photo:
             self.delete_photo(self.photo)
 
-        super().delete(*args, **kwargs)
+        super().delete(*args, **kwargs)  # parent function
 
     def __str__(self):
         photo_str = self.photo.url if self.photo else 'no photo'
