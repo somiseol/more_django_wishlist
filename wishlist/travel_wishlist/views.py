@@ -66,7 +66,7 @@ def place_details(request,place_pk):
 
     # if POST, validate form and update
     if request.method == 'POST':
-        form = TripReviewForm(request.POST, request.Files, instance=place)  # new TripReviewForm form object from the data that was sent with the HTTP request; put in data the user has sent to update an instance from the model db
+        form = TripReviewForm(request.POST, request.FILES, instance=place)  # new TripReviewForm form object from the data that was sent with the HTTP request; put in data the user has sent to update an instance from the model db
         if form.is_valid():  # are all the fields filled in that are required by the db with the right type of data
             form.save()
             messages.info(request, 'Trip information updated!')
@@ -79,9 +79,9 @@ def place_details(request,place_pk):
         # if place is visited, show form
         if place.visited:
             review_form = TripReviewForm(instance=place)
-            return render(request, 'travel_wishlist/place_details.html', {'place': place, 'review_form': review_form})
+            return render(request, 'travel_wishlist/place_detail.html', {'place': place, 'review_form': review_form})
         else:
-            return render(request, 'travel_wishlist/place_details.html', {'place': place})
+            return render(request, 'travel_wishlist/place_detail.html', {'place': place})
 
 @login_required
 def delete_place(request, place_pk):
