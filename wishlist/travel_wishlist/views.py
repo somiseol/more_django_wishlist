@@ -35,8 +35,8 @@ def about(request):
 
 @login_required
 def places_visited(request):
-    visited_places = Place.objects.filter(visited=True).order_by('name')
-    return render(request, 'travel_wishlist/visited.html', {'visited_places': visited_places})
+    visited = Place.objects.filter(visited=True).order_by('name')
+    return render(request, 'travel_wishlist/visited.html', {'visited': visited})
 
 
 @login_required
