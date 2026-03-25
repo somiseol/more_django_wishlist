@@ -5,7 +5,27 @@
 <h2>{{ place.name }}</h2>
 
 {% if place.visited %}
+
     <p>You have visited {{ place.name }}</p>
+
+    <h3>Notes</h3>
+    <p>{{ place.notes | default: "No notes." }}</p>
+
+    <h3>Date Visited</h3>
+    <p>{{ place.date_visited | default: "Date visited not set." }}
+
+    <h3>Photo</h3>
+    {% if place.photo %}
+        <img src="{{ place.photo.url }}">
+    {% else %}
+        <p>No photo uploaded.</p>
+    {% endif %}
+
+    <form action="{% url 'place_details' place.pk %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ review_form.as_p }}
+        <button type="submit">Save Review</button>
+    </form>
 
 {% else %}
     <p>You have NOT visited {{ place.name }}</p>
